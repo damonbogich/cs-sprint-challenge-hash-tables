@@ -14,33 +14,32 @@ def reconstruct_trip(tickets, length):
     for ticket in tickets:
       dictt[ticket.source] = ticket.destination
     #put in first fligth
+    print(dictt)
+
+
+
     final_list = [dictt['NONE']]
 
 
-    for i in range(len(tickets)-3):
+    for i in range(len(tickets) - 2):
         #get destination for where you arrived
       next_trip = dictt[final_list[i]]
 
       final_list.append(next_trip)
 
-      if i == len(tickets)-3:
+
+      if i == len(tickets) - 3:
         final_list.append('NONE')
+    #none not being added
 
     return final_list
 
 
-ticket_1 = Ticket("PIT", "ORD")
-ticket_2 = Ticket("XNA", "SAP")
-ticket_3 = Ticket("SFO", "BHM")
-ticket_4 = Ticket("FLG", "XNA")
-ticket_5 = Ticket("NONE", "LAX")
-ticket_6 = Ticket("LAX", "SFO")
-ticket_7 = Ticket("SAP", "SLC")
-ticket_8 = Ticket("ORD", "NONE")
-ticket_9 = Ticket("SLC", "PIT")
-ticket_10 = Ticket("BHM", "FLG")
+ticket_1 = Ticket("DCA", "DTW")
+ticket_2 = Ticket("NONE", "PDX")
+ticket_3 = Ticket("DTW", "NONE") 
+ticket_4 = Ticket("PDX", "DCA")
 
-tickets = [ticket_1, ticket_2, ticket_3, ticket_4, ticket_5,
-            ticket_6, ticket_7, ticket_8, ticket_9, ticket_10]
+tickets = [ticket_1, ticket_2, ticket_3, ticket_4]
 
-print(reconstruct_trip(tickets, 10))
+print(reconstruct_trip(tickets, 4))
